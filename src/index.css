@@ -1,0 +1,83 @@
+.botaoSair {
+   background-color: green;
+   height: 80px;
+   width: 80px; 
+   border-radius: 50%;
+   position: absolute;
+   bottom: 15%;
+   right: 5%;
+   z-index: 20000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0.6;
+   font-weight: bold;
+}
+
+.botaoInicio {
+   background-color: rgb(0, 90, 128);
+   height: 80px;
+   width: 80px; 
+   border-radius: 50%;
+   position: absolute;
+   bottom: 25%;
+   right: 5%;
+   z-index: 20000;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   opacity: 0.6;
+   font-weight: bold;
+}
+
+.ubuntu-light {
+   font-family: "Ubuntu", serif;
+   font-weight: 300;
+   font-style: normal;
+ }
+ 
+ .ubuntu-regular {
+   font-family: "Ubuntu", serif;
+   font-weight: 400;
+   font-style: normal;
+ }
+ 
+ .ubuntu-medium {
+   font-family: "Ubuntu", serif;
+   font-weight: 500;
+   font-style: normal;
+ }
+ 
+ .ubuntu-bold {
+   font-family: "Ubuntu", serif;
+   font-weight: 700;
+   font-style: normal;
+ }
+ 
+ .ubuntu-light-italic {
+   font-family: "Ubuntu", serif;
+   font-weight: 300;
+   font-style: italic;
+ }
+ 
+ .ubuntu-regular-italic {
+   font-family: "Ubuntu", serif;
+   font-weight: 400;
+   font-style: italic;
+ }
+ 
+ .ubuntu-medium-italic {
+   font-family: "Ubuntu", serif;
+   font-weight: 500;
+   font-style: italic;
+ }
+ 
+ .ubuntu-bold-italic {
+   font-family: "Ubuntu", serif;
+   font-weight: 700;
+   font-style: italic;
+ }  
+
+ .labelForm {
+  padding-right: 10px;
+ }

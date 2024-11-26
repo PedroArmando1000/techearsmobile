@@ -1,0 +1,13 @@
+.titulo-login {
+   text-align: center;
+   padding: 10px;
+   font-size: 30px;
+   font-weight: bold;
+}
+
+.conteudo-login {
+    display: flex;
+    height: 70vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+}

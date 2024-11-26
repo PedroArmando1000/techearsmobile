@@ -13,6 +13,7 @@ import {
 import { useLocation } from 'react-router-dom';
 import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import './Menu.css';
+import { useEffect, useState } from 'react';
 
 interface AppPage {
   url: string;
@@ -23,54 +24,56 @@ interface AppPage {
 
 const appPages: AppPage[] = [
   {
-    title: 'Inbox',
-    url: '/folder/Inbox',
+    title: 'Filiais',
+    url: '/filiais/list',
     iosIcon: mailOutline,
     mdIcon: mailSharp
   },
   {
-    title: 'Outbox',
-    url: '/folder/Outbox',
+    title: 'Usuários',
+    url: '/usuarios/list',
     iosIcon: paperPlaneOutline,
     mdIcon: paperPlaneSharp
   },
   {
-    title: 'Favorites',
-    url: '/folder/Favorites',
+    title: 'Funcionários',
+    url: '/funcionarios/list',
     iosIcon: heartOutline,
     mdIcon: heartSharp
-  },
-  {
-    title: 'Archived',
-    url: '/folder/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
-  },
-  {
-    title: 'Trash',
-    url: '/folder/Trash',
-    iosIcon: trashOutline,
-    mdIcon: trashSharp
-  },
-  {
-    title: 'Spam',
-    url: '/folder/Spam',
-    iosIcon: warningOutline,
-    mdIcon: warningSharp
-  }
+  }, 
 ];
 
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
 const Menu: React.FC = () => {
   const location = useLocation();
+  const [estaLogado, setEstaLogado] = useState<any>(false)
+
+  useEffect(() => {
+      const intervalo = setInterval(() => {
+        
+          if (localStorage.getItem('email')) {
+              setEstaLogado(true) 
+          } else { 
+              setEstaLogado(false)
+          }
+      
+      }, 150);
+    
+      return () => {
+          clearInterval(intervalo)
+      }
+  }, [])
 
   return (
+    estaLogado ? 
+    <>
+    
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>{localStorage.getItem('nome')}</IonListHeader>
+          <IonNote>{localStorage.getItem('email')}</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
@@ -82,19 +85,14 @@ const Menu: React.FC = () => {
             );
           })}
         </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon aria-hidden="true" slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
-        </IonList>
+  
       </IonContent>
     </IonMenu>
+
+    </> : ''
+   
   );
 };
 
-export default Menu;
+export default Menu; 
+
